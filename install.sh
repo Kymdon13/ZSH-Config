@@ -55,14 +55,59 @@ fi
 echo "=========================="
 echo "Installing p10k..."
 echo "=========================="
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+if [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ];then
+    echo "Powerlevel10k theme is not installed, installing now..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+else
+    echo "Powerlevel10k theme is already installed."
+fi
 
 echo "=========================="
 echo "Installing zsh-autosuggestions plugin..."
 echo "=========================="
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ];then
+    echo "zsh-autosuggestions plugin is not installed, installing now..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+else
+    echo "zsh-autosuggestions plugin is already installed."
+fi
 
 echo "=========================="
 echo "Installing zsh-syntax-highlighting plugin..."
 echo "=========================="
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ];then
+    echo "zsh-syntax-highlighting plugin is not installed, installing now..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+else
+    echo "zsh-syntax-highlighting plugin is already installed."
+fi
+
+echo "=========================="
+echo "Installing alias.zsh..."
+echo "=========================="
+if [ ! -f ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/alias.zsh ];then
+    echo "alias.zsh file is not installed, installing now..."
+    curl -fsSL https://raw.githubusercontent.com/Kymdon13/ZSH-Config/refs/heads/main/alias.zsh -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/alias.zsh
+else
+    echo "alias.zsh file is already installed."
+fi
+
+echo "=========================="
+echo "Installing env.zsh..."
+echo "=========================="
+if [ ! -f ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/env.zsh ];then
+    echo "env.zsh file is not installed, installing now..."
+    curl -fsSL https://raw.githubusercontent.com/Kymdon13/ZSH-Config/refs/heads/main/env.zsh -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/env.zsh
+else
+    echo "env.zsh file is already installed."
+fi
+
+echo "=========================="
+echo "Installing tools.zsh..."
+echo "=========================="
+if [ ! -f ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/tools.zsh ];then
+    echo "tools.zsh file is not installed, installing now..."
+    curl -fsSL https://raw.githubusercontent.com/Kymdon13/ZSH-Config/refs/heads/main/tools.zsh -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/tools.zsh
+else
+    echo "tools.zsh file is already installed."
+fi
